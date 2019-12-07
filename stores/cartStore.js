@@ -1,7 +1,7 @@
 import { computed, decorate, observable } from "mobx";
 
 class CartStore {
-  items = [];
+  dinosaurs = [];
 
   addItemToCart = item => {
     const itemExist = this.items.find(_item => _item.name === item.name);
@@ -19,7 +19,7 @@ class CartStore {
 
   get quantity() {
     let quantity = 0;
-    this.items.forEach(item => (quantity += item.quantity));
+    this.dinosaurs.forEach(dinosaur => (quantity += item.quantity));
     return quantity;
   }
 }
