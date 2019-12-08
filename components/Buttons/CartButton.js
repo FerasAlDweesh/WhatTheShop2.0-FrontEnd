@@ -9,21 +9,20 @@ import authStore from "../../stores/authStore";
 
 const CartButton = ({ navigation }) => {
   const handlePress = () => {
-    if (authStore.user) navigation.navigate("CartScreen");
-    else navigation.navigate("CartScreen");
+    if (authStore.user) navigation.navigate("Cart");
+    else navigation.navigate("Login");
   };
 
   return (
-    <Button onPress={handlePress} transparent light>
+    <Button transparent light>
       {authStore.user ? (
         <>
-
           <Text style={{ color: "black" }}>{cartStore.quantity}</Text>
           <Icon
             name="shoppingcart"
             type="AntDesign"
             style={{ color: "black" }}
-            onPress={() => navigation.navigate("CartScreen")}
+            onPress={() => navigation.navigate("Cart")}
           />
         </>
       ) : (
