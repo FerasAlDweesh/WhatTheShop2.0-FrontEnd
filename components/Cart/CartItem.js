@@ -5,7 +5,7 @@ import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
 
 // Style
 import styles from "./styles";
-import cartStore from "../../Stores/cartStore";
+import cartStore from "../../stores/cartStore";
 
 const CartItem = ({ dinosaur }) => {
   return (

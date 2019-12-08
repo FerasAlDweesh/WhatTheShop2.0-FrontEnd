@@ -28,6 +28,7 @@ const CartButton = ({ navigation }) => {
       ) : (
         <Icon
           name="login"
+          type="MaterialCommunityIcons"
           style={{ color: "black" }}
           onPress={() => navigation.navigate("Login")}
         />

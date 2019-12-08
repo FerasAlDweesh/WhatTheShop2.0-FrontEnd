@@ -8,7 +8,7 @@ import { Text, List, Button } from "native-base";
 import CartItem from "./CartItem";
 
 // Stores
-import cartStore from "../../Stores/cartStore";
+import cartStore from "../../stores/cartStore";
 
 const Cart = () => {
   const cartItems = cartStore.dinosaurs.map(dinosaur => (
