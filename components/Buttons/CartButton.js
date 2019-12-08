@@ -8,10 +8,10 @@ import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
 const CartButton = ({ navigation }) => {
-  const handlePress = () => {
-    if (authStore.user) navigation.navigate("Cart");
-    else navigation.navigate("Login");
-  };
+  // const handlePress = () => {
+  //   if (authStore.user) navigation.navigate("Cart");
+  //   else navigation.navigate("Login");
+  // };
 
   return (
     <Button transparent light>
