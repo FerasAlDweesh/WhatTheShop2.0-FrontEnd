@@ -13,9 +13,6 @@ class Login extends Component {
     password: ""
   };
 
-  componentDidMount() {
-    if (authStore.user) this.props.navigation.navigate("StackNav");
-  }
   handlePress = () => {
     authStore.login(this.state, this.props.navigation);
   };
