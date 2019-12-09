@@ -15,7 +15,7 @@ const LogoutButton = ({ navigation }) => {
     return (
       <Icon
         onPress={() => authStore.logout(navigation)}
-        name="logout"
+        name="power"
         type="MaterialCommunityIcons"
         style={{ color: "red" }}
       />
