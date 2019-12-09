@@ -31,7 +31,8 @@ import cartStore from "../../stores/cartStore";
 class DinosaurDetail extends Component {
   state = {
     quantity: 1,
-    name: this.props.navigation.getParam("dinosaurName")
+    name: this.props.navigation.getParam("dinosaurName"),
+    item: this.props.navigation.getParam("dinosaurID")
   };
 
   handleAdd = () => {

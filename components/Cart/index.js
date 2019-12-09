@@ -11,8 +11,8 @@ import CartItem from "./CartItem";
 import cartStore from "../../stores/cartStore";
 
 const Cart = () => {
-  const cartItems = cartStore.dinosaurs.map(dinosaur => (
-    <CartItem dinosaur={dinosaur} key={`${dinosaur.name} ${dinosaur.price}`} />
+  const cartItems = cartStore.items.map(dinosaur => (
+    <CartItem dinosaur={dinosaur} key={dinosaur.name} />
   ));
 
   return (
