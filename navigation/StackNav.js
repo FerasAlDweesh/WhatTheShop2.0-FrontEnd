@@ -4,7 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import List from "../components/List";
 import Detail from "../components/Detail";
 
-const LolStack = createStackNavigator(
+const StackNav = createStackNavigator(
   {
     List: List,
     DetailScreen: Detail
@@ -17,4 +17,4 @@ const LolStack = createStackNavigator(
   }
 );
 
-export default LolStack;
+export default StackNav;

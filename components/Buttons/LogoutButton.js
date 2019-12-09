@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { withNavigation } from "react-navigation";
 
 // NativeBase Components
-import { Text, Button, Icon } from "native-base";
+import { Text, Icon, Button } from "native-base";
 
 // Styles
 import styles from "./styles";
@@ -11,16 +11,15 @@ import styles from "./styles";
 import authStore from "../../stores/authStore";
 
 const LogoutButton = ({ navigation }) => {
-  return (
-    <Icon
-      danger
-      onPress={authStore.logout}
-      name="logout"
-      type="MaterialCommunityIcons"
-      style={{ color: "grey" }}
-      onPress={() => navigation.navigate("ListScreen")}
-    />
-  );
+  if (authStore.user)
+    return (
+      <Icon
+        onPress={() => authStore.logout(navigation)}
+        name="logout"
+        type="MaterialCommunityIcons"
+        style={{ color: "red" }}
+      />
+    );
 };
 
 export default withNavigation(observer(LogoutButton));

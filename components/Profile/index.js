@@ -8,14 +8,16 @@ import {
   Button,
   Card,
   CardItem,
-  Left,
-  Picker,
   Text,
   Spinner,
   Container,
   Header,
   Content,
-  Accordion
+  Accordion,
+  List,
+  ListItem,
+  Thumbnail,
+  Left
 } from "native-base";
 
 // Stores
@@ -31,47 +33,55 @@ import LogoutButton from "../Buttons/LogoutButton";
 class Profile extends Component {
   componentDidMount = async () => {
     if (authStore.user) {
+      console.log("BEFORE");
       await profileStore.getUserProfile();
-      console.log(profileStore.user);
+      console.log("AFTER PROFILE");
       await orderStore.fetchAllOrders();
-      console.log(profileStore.orders);
     } else {
-      Alert.alert(
-        "You're not logged in!",
-        "Log in to view your profile!",
-        [
-          {
-            text: "Nevermind",
-            style: "cancel"
-          },
-          {
-            text: "Log in",
-            onPress: () => this.props.navigation.navigate("Login")
-          }
-        ],
-        { cancelable: true }
-      );
+      this.props.navigation.replace("Login");
     }
   };
+
   render() {
     if (profileStore.loading || orderStore.loading) {
       return <Spinner />;
     } else {
+      const orderHistory = orderStore.orders.map(order => ({
+        title: `Order No. ${order.id} (${order.date.slice(0, 10)}) `
+        // content: `${order.items[0].item.name}, ${order.items[0].item.price} KD, QTY: ${order.items[0].quantity} `
+      }));
       return (
         <>
-          <Card>
-            <CardItem>
-              <Left>
-                <Text>{profileStore.user.name}</Text>
-                <Text>{profileStore.user.email}</Text>
-                <Text>{profileStore.user.username}</Text>
-              </Left>
-            </CardItem>
-          </Card>
+          <Content>
+            <List>
+              <ListItem thumbnail>
+                <Left>
+                  <Thumbnail
+                    style={{ width: 120, height: 120, borderRadius: 30 / 2 }}
+                    square
+                    source={{
+                      uri:
+                        "https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg"
+                    }}
+                  />
+                </Left>
+                <Body>
+                  <Text style={{ fontSize: 30 }}>{profileStore.user.name}</Text>
+                  <Text note style={{ fontSize: 15 }}>
+                    {profileStore.user.email}
+                  </Text>
+                </Body>
+              </ListItem>
+            </List>
+          </Content>
           <Container>
-            <Header />
+            <Header>
+              <Left>
+                <Text style={{ fontSize: 20 }}>Order History:</Text>
+              </Left>
+            </Header>
             <Content padder>
-              <Accordion order={orderStore.id} expanded={0} />
+              <Accordion dataArray={orderHistory} expanded={0} />
             </Content>
           </Container>
         </>

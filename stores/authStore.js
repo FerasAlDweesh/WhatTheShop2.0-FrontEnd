@@ -42,8 +42,9 @@ class AuthStore {
     }
   };
 
-  logout = () => {
-    this.setUser();
+  logout = async navigation => {
+    await this.setUser();
+    navigation.navigate("List");
   };
 
   checkForToken = async () => {
@@ -59,7 +60,7 @@ class AuthStore {
         // Set auth token header
         this.setUser(token);
       } else {
-        this.logout();
+        this.setUser();
       }
     }
   };
