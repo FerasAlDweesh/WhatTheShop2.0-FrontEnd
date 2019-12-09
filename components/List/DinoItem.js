@@ -1,7 +1,11 @@
 import React from "react";
 import { withNavigation } from "react-navigation";
 // import { View } from "react-native";
-import { Image, View } from "react-native";
+import { Image, Alert } from "react-native";
+
+// stores
+import cartStore from "../../stores/cartStore";
+import authStore from "../../stores/authStore";
 
 // NativeBase Components
 import {
@@ -32,8 +36,8 @@ const DinoItem = ({ dinosaur, navigation }) => {
     });
 
   return (
-    <TouchableOpacity onPress={handlePress}>
-      <Card>
+    <Card>
+      <TouchableOpacity onPress={handlePress}>
         <CardItem>
           <Left>
             <Body>
@@ -48,13 +52,40 @@ const DinoItem = ({ dinosaur, navigation }) => {
             style={{ height: 200, width: null, flex: 1 }}
           />
         </CardItem>
-        <CardItem>
-          <Right>
-            <Text>{dinosaur.price}</Text>
-          </Right>
-        </CardItem>
-      </Card>
-    </TouchableOpacity>
+      </TouchableOpacity>
+      <CardItem>
+        <Left>
+          <Text>{dinosaur.price}</Text>
+        </Left>
+        <Right>
+          <Icon
+            onPress={() => {
+              if (authStore.user)
+                cartStore.addItemToCart({ quantity: 1, name: dinosaur.name });
+              else {
+                Alert.alert(
+                  "Login to add items to cart",
+                  "It's the button on the top right corner.",
+                  [
+                    {
+                      text: "Ok, boss."
+                    },
+                    {
+                      text: "Cancel",
+                      style: "cancel"
+                    }
+                  ],
+                  { cancelable: true }
+                );
+              }
+            }}
+            name="cart"
+            type="MaterialCommunityIcons"
+            style={{ color: "red" }}
+          />
+        </Right>
+      </CardItem>
+    </Card>
   );
 };
 

@@ -27,8 +27,8 @@ const DinosaurList = ({ navigation }) => {
 };
 
 DinosaurList.navigationOptions = {
-  title: "Dinosaur List"
-  //   headerRight: <CartButton />
+  title: "Dinosaur List",
+  headerRight: <CartButton />
 };
 
 export default observer(DinosaurList);
