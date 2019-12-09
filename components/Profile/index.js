@@ -46,7 +46,7 @@ class Profile extends Component {
           },
           {
             text: "Log in",
-            onPress: () => this.props.navigation.navigate("Login")
+            onPress: () => this.props.navigation.replace("Login")
           }
         ],
         { cancelable: true }

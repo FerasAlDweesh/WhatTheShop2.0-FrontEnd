@@ -13,7 +13,7 @@ const CartItem = ({ dinosaur }) => {
       <Left>
         <Text style={styles.name}> {dinosaur.name} </Text>
         <Text note style={styles.price}>
-          {item.price}
+          {dinosaur.price}
         </Text>
       </Left>
       <Body>
