@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 5,
     borderRadius: 15,
-    backgroundColor: "rgb(255,100,100)"
+    backgroundColor: "rgb(153,0,0)"
   }
 });
 
