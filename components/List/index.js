@@ -7,6 +7,7 @@ import { List, Content, Spinner } from "native-base";
 // Component
 import DinoItem from "./DinoItem";
 import CartButton from "../Buttons/CartButton";
+import ProfileButton from "../Buttons/ProfileButton";
 
 // Stores
 import dinoStore from "../../stores/dinoStore";
@@ -28,7 +29,8 @@ const DinosaurList = ({ navigation }) => {
 
 DinosaurList.navigationOptions = {
   title: "Dinosaur List",
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerLeft: <ProfileButton />
 };
 
 export default observer(DinosaurList);

@@ -3,6 +3,10 @@ import AppContainer from "./navigation";
 import { Spinner } from "native-base";
 import * as Font from "expo-font";
 
+import Constants from "expo-constants";
+import authStore from "./stores/authStore";
+
+
 class App extends React.Component {
   state = {
     loading: true
@@ -13,6 +17,7 @@ class App extends React.Component {
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
     });
+    await authStore.checkForToken();
     this.setState({ loading: false });
   }
 
