@@ -14,9 +14,10 @@ class CartStore {
     console.log(this.items);
   };
 
-  removeItemFromCart = async item =>
-    (this.items = this.items.filter(_item => _item !== item)) &&
-    (await AsyncStorage.removeItem("items"));
+  removeItemFromCart = async item => {
+    this.items = this.items.filter(_item => _item !== item);
+    await AsyncStorage.setItem("items", JSON.stringify(this.items));
+  };
 
   checkoutCart = async navigation => {
     this.items.forEach(item => delete item.name);
@@ -24,6 +25,7 @@ class CartStore {
     try {
       await instance.post("orders/create/", { items: this.items });
       this.items = [];
+      await AsyncStorage.setItem("items", JSON.stringify(this.items));
       Alert.alert(
         "Thank you for your purchase!",
         "See you again soon",
