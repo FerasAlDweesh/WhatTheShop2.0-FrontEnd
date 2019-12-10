@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Alert } from "react-native";
 import { observer } from "mobx-react";
 
 // NativeBase Components
@@ -21,10 +20,13 @@ import {
   Left
 } from "native-base";
 
+// Buttons
+import CartButton from "../Buttons/CartButton";
+import DinoButton from "../Buttons/DinoButton";
+
 // Stores
 import authStore from "../../stores/authStore";
 import orderStore from "../../stores/orderStore";
-import CartButton from "../Buttons/CartButton";
 import profileStore from "../../stores/profileStore";
 
 //Styles
@@ -96,7 +98,7 @@ class Profile extends Component {
 
 Profile.navigationOptions = {
   title: "Profile",
-  headerRight: <CartButton />,
+  headerRight: <DinoButton />,
   headerLeft: <LogoutButton />
 };
 export default observer(Profile);
