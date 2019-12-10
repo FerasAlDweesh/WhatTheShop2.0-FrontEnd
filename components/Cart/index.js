@@ -10,7 +10,7 @@ import CartItem from "./CartItem";
 // Stores
 import cartStore from "../../stores/cartStore";
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
   const cartItems = cartStore.items.map(dinosaur => (
     <CartItem dinosaur={dinosaur} key={dinosaur.name} />
   ));
@@ -18,7 +18,7 @@ const Cart = () => {
   return (
     <List>
       {cartItems}
-      <Button full danger onPress={cartStore.checkoutCart}>
+      <Button full danger onPress={() => cartStore.checkoutCart(navigation)}>
         <Text>Checkout</Text>
       </Button>
     </List>
