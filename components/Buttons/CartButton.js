@@ -16,7 +16,7 @@ const CartButton = ({ navigation }) => {
           <Icon
             name="shoppingcart"
             type="AntDesign"
-            style={{ color: "black" }}
+            style={{ color: "rgb(153,0,0)" }}
             onPress={() => navigation.navigate("Cart")}
           />
         </>
@@ -24,7 +24,7 @@ const CartButton = ({ navigation }) => {
         <Icon
           name="login"
           type="MaterialCommunityIcons"
-          style={{ color: "black" }}
+          style={{ color: "rgb(153,0,0)" }}
           onPress={() => navigation.navigate("Login")}
         />
       )}

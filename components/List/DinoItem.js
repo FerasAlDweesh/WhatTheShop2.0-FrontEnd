@@ -85,7 +85,7 @@ const DinoItem = ({ dinosaur, navigation }) => {
             }}
             name="cart"
             type="MaterialCommunityIcons"
-            style={{ color: "red" }}
+            style={{ color: "rgb(153,0,0)" }}
           />
         </Right>
       </CardItem>

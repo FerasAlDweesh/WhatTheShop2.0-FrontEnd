@@ -9,7 +9,7 @@ const DinoButton = ({ navigation }) => {
       <Icon
         name="pets"
         type="MaterialIcons"
-        style={{ color: "black" }}
+        style={{ color: "rgb(153,0,0)" }}
         onPress={() => navigation.navigate("List")}
       />
     </Button>

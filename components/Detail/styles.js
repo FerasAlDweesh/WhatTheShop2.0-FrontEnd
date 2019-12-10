@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   addButton: {
     alignSelf: "center",
-    backgroundColor: "rgb(20,90,100)",
+    backgroundColor: "rgb(153,0,0)",
+    borderRadius: 15,
     width: 150
   },
   card: {

@@ -1,7 +1,6 @@
 import { computed, decorate, observable } from "mobx";
 import { instance } from "./instance";
 import { Alert } from "react-native";
-import ProfileStack from "../navigation/ProfileStack";
 import { AsyncStorage } from "react-native";
 
 class CartStore {
