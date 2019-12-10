@@ -61,7 +61,11 @@ const DinoItem = ({ dinosaur, navigation }) => {
           <Icon
             onPress={() => {
               if (authStore.user)
-                cartStore.addItemToCart({ quantity: 1, name: dinosaur.name });
+                cartStore.addItemToCart({
+                  quantity: 1,
+                  name: dinosaur.name,
+                  item: dinosaur.id
+                });
               else {
                 Alert.alert(
                   "Login to add items to cart",

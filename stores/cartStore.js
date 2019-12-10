@@ -1,21 +1,25 @@
 import { computed, decorate, observable } from "mobx";
 import { instance } from "./instance";
 import { Alert } from "react-native";
+import ProfileStack from "../navigation/ProfileStack";
+import { AsyncStorage } from "react-native";
 
 class CartStore {
   items = [];
 
-  addItemToCart = item => {
+  addItemToCart = async item => {
     const itemExist = this.items.find(_item => _item.name === item.name);
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
+    await AsyncStorage.setItem("items", this.items);
     console.log(this.items);
   };
 
-  removeItemFromCart = item =>
-    (this.items = this.items.filter(_item => _item !== item));
+  removeItemFromCart = async item =>
+    (this.items = this.items.filter(_item => _item !== item)) &&
+    (await AsyncStorage.removeItem("items"));
 
-  checkoutCart = async () => {
+  checkoutCart = async navigation => {
     this.items.forEach(item => delete item.name);
     console.log("ORDER", this.items);
     try {
@@ -26,8 +30,8 @@ class CartStore {
         "See you again soon",
         [
           {
-            text: "Done"
-            // onPress: () => this.props.navigation.replace("List")
+            text: "Done",
+            onPress: () => navigation.replace("Profile")
           }
         ],
         { cancelable: true }
@@ -42,6 +46,11 @@ class CartStore {
     this.items.forEach(dinosaur => (quantity += dinosaur.quantity));
     return quantity;
   }
+
+  retrieveItems = async () => {
+    const items = await AsyncStorage.getItem("items");
+    if (items) this.items = items;
+  };
 }
 
 decorate(CartStore, {
@@ -50,4 +59,5 @@ decorate(CartStore, {
 });
 
 const cartStore = new CartStore();
+cartStore.retrieveItems();
 export default cartStore;
