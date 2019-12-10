@@ -2,10 +2,12 @@ import React from "react";
 import AppContainer from "./navigation";
 import { Spinner } from "native-base";
 import * as Font from "expo-font";
+
 import Constants from "expo-constants";
 import authStore from "./stores/authStore";
 
-export default class App extends React.Component {
+
+class App extends React.Component {
   state = {
     loading: true
   };
@@ -21,8 +23,10 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <Spinner color="#132D4B" />;
+      return <Spinner />;
     }
     return <AppContainer />;
   }
 }
+
+export default App;
