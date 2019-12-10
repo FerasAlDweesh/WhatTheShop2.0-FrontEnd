@@ -11,7 +11,7 @@ class CartStore {
     const itemExist = this.items.find(_item => _item.name === item.name);
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
-    await AsyncStorage.setItem("items", this.items);
+    await AsyncStorage.setItem("items", JSON.stringify(this.items));
     console.log(this.items);
   };
 
@@ -34,7 +34,7 @@ class CartStore {
             onPress: () => navigation.replace("Profile")
           }
         ],
-        { cancelable: true }
+        { cancelable: false }
       );
     } catch (err) {
       console.error(err);
@@ -49,7 +49,7 @@ class CartStore {
 
   retrieveItems = async () => {
     const items = await AsyncStorage.getItem("items");
-    if (items) this.items = items;
+    if (items) this.items = JSON.parse(items);
   };
 }
 
