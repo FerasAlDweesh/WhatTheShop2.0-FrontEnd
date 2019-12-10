@@ -10,7 +10,10 @@ import authStore from "../../stores/authStore";
 class Register extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    first_name: "",
+    last_name: "",
+    email: ""
   };
 
   handlePress = () => {
@@ -27,12 +30,33 @@ class Register extends Component {
             onChangeText={username => this.setState({ username })}
           />
         </Item>
-        <Item last>
+        <Item>
           <Input
             placeholder="Password"
             autoCapitalize="none"
             secureTextEntry={true}
             onChangeText={password => this.setState({ password })}
+          />
+        </Item>
+        <Item>
+          <Input
+            placeholder="First Name"
+            autoCapitalize="none"
+            onChangeText={first_name => this.setState({ first_name })}
+          />
+        </Item>
+        <Item>
+          <Input
+            placeholder="Last Name"
+            autoCapitalize="none"
+            onChangeText={last_name => this.setState({ last_name })}
+          />
+        </Item>
+        <Item>
+          <Input
+            placeholder="Email"
+            autoCapitalize="none"
+            onChangeText={email => this.setState({ email })}
           />
         </Item>
         <Button full onPress={this.handlePress}>
